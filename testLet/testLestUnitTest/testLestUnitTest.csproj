@@ -4,6 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <RootNamespace>TestLestUnitTest</RootNamespace>
+
+    <AssemblyName>TestLestUnitTest</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

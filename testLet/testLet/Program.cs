@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace testLet
+namespace TestLet
 {
     class Program
     {

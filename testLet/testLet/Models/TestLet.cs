@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace testLet.Models
+namespace TestLet.Models
 {
     public class Testlet
     {
