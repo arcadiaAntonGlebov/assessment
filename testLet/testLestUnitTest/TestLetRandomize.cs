@@ -1,8 +1,5 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using TestLestUnitTest.Helper;
 using TestLet.Exceptions;
 using TestLet.Models;
@@ -12,14 +9,28 @@ namespace TestLestUnitTest
     [TestFixture]
     public class TestLetRandomize
     {
-        const string testId = "testId";
+        const string TestId = "testId";
+
+        [Test]
+        public void CreateWithIncorrectCountItem()
+        {
+            // items should be 10
+            Assert.Throws<IncorrectItemsException>(() => {
+                var testLet = new Testlet(TestId, ItemHelper.CreateItems().Take(5).ToList());
+                testLet.Randomize();
+            });
+            Assert.Throws<IncorrectItemsException>(() => { 
+                var testLet = new Testlet(TestId, ItemHelper.CreateItems().Concat(ItemHelper.CreateItems()).ToList());
+                testLet.Randomize();
+            });
+        }
 
         [Test]
         public void CreateWithSameItemID()
         {
             var currentItems = ItemHelper.CreateItems();
             currentItems[1].ItemId = "1";
-            var testLet = new Testlet(testId, currentItems);
+            var testLet = new Testlet(TestId, currentItems);
             Assert.Throws<IncorrectItemsException>(() => testLet.Randomize());
         }
 
@@ -28,7 +39,7 @@ namespace TestLestUnitTest
         {
             var currentItems = ItemHelper.CreateItems();
             currentItems[9].ItemType = ItemTypeEnum.Pretest;
-            var testLet = new Testlet(testId, currentItems);
+            var testLet = new Testlet(TestId, currentItems);
             Assert.Throws<IncorrectItemsException>(() => testLet.Randomize());
         }
 
@@ -37,7 +48,7 @@ namespace TestLestUnitTest
         {
             var currentItems = ItemHelper.CreateItems();
 
-            var testLet = new Testlet(testId, currentItems);
+            var testLet = new Testlet(TestId, currentItems);
 
             var randomizeItems = testLet.Randomize();
 
@@ -51,7 +62,7 @@ namespace TestLestUnitTest
         {
             var currentItems = ItemHelper.CreateItems();
 
-            var testLet = new Testlet(testId, currentItems);
+            var testLet = new Testlet(TestId, currentItems);
 
             var randomizeItems = testLet.Randomize();
 
@@ -68,7 +79,7 @@ namespace TestLestUnitTest
         {
             var currentItems = ItemHelper.CreateItems();
 
-            var testLet = new Testlet(testId, currentItems);
+            var testLet = new Testlet(TestId, currentItems);
 
             var randomizeItems = testLet.Randomize();
 
@@ -77,14 +88,10 @@ namespace TestLestUnitTest
             //we have limited items and it is possible that some items in same order but it should be less than 10
             Assert.IsTrue(ItemHelper.IntersectItems(randomizeItems, newRandomItems) < 10);
 
-            var newTestLet = new Testlet(testId, currentItems);
+            var newTestLet = new Testlet(TestId, currentItems);
             newRandomItems = newTestLet.Randomize();
             //we have limited items and it is possible that some items in same order but it should be less than 10
             Assert.IsTrue(ItemHelper.IntersectItems(randomizeItems, newRandomItems) < 10);
         }
-
-        
-
-        
     }
 }

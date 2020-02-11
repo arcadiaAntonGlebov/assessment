@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using TestLet.Exceptions;
 using TestLet.Helper;
 
@@ -18,11 +17,6 @@ namespace TestLet.Models
             if (String.IsNullOrWhiteSpace(testletId))
             {
                 throw new ArgumentException("testLetId must be filled");
-            }
-            //Verify items
-            if (items.Count != 10)
-            {
-                throw new ArgumentException("items should have 10 element");
             }
 
             TestletId = testletId;
@@ -62,7 +56,12 @@ namespace TestLet.Models
 
         private void VerifyItems()
         {
-            if(Items.Any(_=> _ == null))
+            if (Items.Count != 10)
+            {
+                throw new IncorrectItemsException();
+            }
+
+            if (Items.Any(_=> _ == null))
             {
                 throw new IncorrectItemsException();
             }

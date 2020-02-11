@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TestLet.Models
+﻿namespace TestLet.Models
 {
     public class Item
     {

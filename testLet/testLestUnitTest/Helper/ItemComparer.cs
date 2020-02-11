@@ -4,6 +4,7 @@ using TestLet.Models;
 
 namespace TestLestUnitTest.Helper
 {
+    //We have to use own code in test because we do not trust code from target library
     public class ItemsComparer : IEqualityComparer<Item>
     {
         public bool Equals(Item x, Item y)
