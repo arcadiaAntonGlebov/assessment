@@ -3,8 +3,8 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>TestLet</RootNamespace>
-    <AssemblyName>TestLet</AssemblyName>
+    <RootNamespace>Testlet</RootNamespace>
+    <AssemblyName>Testlet</AssemblyName>
     <ApplicationIcon />
     <StartupObject />
   </PropertyGroup>

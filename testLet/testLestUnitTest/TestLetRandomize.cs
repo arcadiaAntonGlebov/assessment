@@ -1,14 +1,14 @@
 ﻿using NUnit.Framework;
 using System.Linq;
-using TestlestUnitTest.Helper;
+using TestletUnitTest.Helper;
 using Testlet.Exceptions;
 using Testlet.Helper;
 using Testlet.Models;
 
-namespace TestLetUnitTest
+namespace TestletUnitTest
 {
     [TestFixture]
-    public class testletRandomize
+    public class TestletRandomize
     {
         const string TestId = "testId";
 

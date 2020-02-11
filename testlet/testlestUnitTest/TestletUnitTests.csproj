@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <RootNamespace>TestLestUnitTest</RootNamespace>
+    <RootNamespace>TestletUnitTest</RootNamespace>
 
-    <AssemblyName>TestLestUnitTest</AssemblyName>
+    <AssemblyName>TestletUnitTest</AssemblyName>
 
     <ApplicationIcon />
 

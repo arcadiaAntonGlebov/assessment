@@ -1,11 +1,11 @@
 ﻿using NUnit.Framework;
 using System;
-using TestlestUnitTest.Helper;
+using TestletUnitTest.Helper;
 
-namespace TestLestUnitTest
+namespace TestletUnitTest
 {
     [TestFixture]
-    public class TestLetCreate
+    public class TestletCreate
     {
         const string TestId = "testId";
 
