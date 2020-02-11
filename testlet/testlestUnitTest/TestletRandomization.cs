@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using TestletUnitTests.Helper;
-using Testlet.Exceptions;
 using Testlet.Models;
+using System;
 
 namespace TestletUnitTests
 {
@@ -18,11 +18,11 @@ namespace TestletUnitTests
             currentItems[3].ItemType = ItemTypeEnum.Operational;
             currentItems[5].ItemType = ItemTypeEnum.Operational;
             var testlet = new Testlet.Models.Testlet(TestId, currentItems);
-            Assert.Throws<IncorrectItemsException>(() => testlet.Randomize());
+            Assert.Throws<InvalidOperationException>(() => testlet.Randomize());
         }
 
         [Test]
-        public void CheckFirstTwoIsPretest()
+        public void CheckFirstTwoItemsArePretest()
         {
             var currentItems = TestData.CreateItems();
 

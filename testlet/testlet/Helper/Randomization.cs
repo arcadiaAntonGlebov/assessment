@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Testlet.Exceptions;
 using Testlet.Models;
 
 namespace Testlet.Helper
@@ -38,7 +37,7 @@ namespace Testlet.Helper
         {
             if (items.Where(_ => _.ItemType == ItemTypeEnum.Pretest).Count() < minimumPretestCount)
             {
-                throw new IncorrectItemsException($"Items should contain {minimumPretestCount} pretested elements");
+                throw new InvalidOperationException($"Items should contain {minimumPretestCount} pretested elements");
             }
         }
 

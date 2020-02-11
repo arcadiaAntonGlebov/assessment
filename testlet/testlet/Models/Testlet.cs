@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Testlet.Exceptions;
 using Testlet.Helper;
 
 namespace Testlet.Models
