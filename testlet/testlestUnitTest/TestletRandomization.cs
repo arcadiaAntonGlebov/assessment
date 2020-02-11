@@ -36,7 +36,7 @@ namespace TestletUnitTests
         }
 
         [Test]
-        public void CheckRandomItemOnCallAndNewElemet()
+        public void ItemsRandomizeDifferentlyEachCall()
         {
             var currentItems = TestData.CreateItems();
 
@@ -44,15 +44,10 @@ namespace TestletUnitTests
 
             var randomizeItems = testlet.Randomize();
 
-            //items should be random
+            //items should be randomize
             var newRandomItems = testlet.Randomize();
             //we have limited items and it is possible that some items in same order but it should be less than 10
-            Assert.IsTrue(TestData.IntersectItems(randomizeItems, newRandomItems) < 10);
-
-            var newtestlet = new Testlet.Models.Testlet(TestId, currentItems);
-            newRandomItems = newtestlet.Randomize();
-            //we have limited items and it is possible that some items in same order but it should be less than 10
-            Assert.IsTrue(TestData.IntersectItems(randomizeItems, newRandomItems) < 10);
+            Assert.IsTrue(TestData.CountIntersectedItems(randomizeItems, newRandomItems) < randomizeItems.Count);
         }
     }
 }

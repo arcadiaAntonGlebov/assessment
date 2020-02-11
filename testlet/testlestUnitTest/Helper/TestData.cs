@@ -21,7 +21,7 @@ namespace TestletUnitTests.Helper
             };
         }
 
-        public static int IntersectItems(List<Item> list1, List<Item> list2)
+        public static int CountIntersectedItems(List<Item> list1, List<Item> list2)
         {
             int countOfIntersection = 0;
             for (int i = 0; i < 10; i++)
