@@ -10,5 +10,9 @@ namespace Testlet.Exceptions
         public IncorrectItemsException()
         {
         }
+
+        public IncorrectItemsException(string message) : base(message)
+        {
+        }
     }
 }

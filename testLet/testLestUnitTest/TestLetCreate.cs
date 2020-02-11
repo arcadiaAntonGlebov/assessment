@@ -10,7 +10,7 @@ namespace TestletUnitTest
         const string TestId = "testId";
 
         [Test]
-        public void Create()
+        public void CreateAndCheckTestletId()
         {
             var correctItems = TestData.CreateItems();
             var testLet = new Testlet.Models.Testlet(TestId, correctItems);
@@ -24,6 +24,12 @@ namespace TestletUnitTest
             Assert.Throws<ArgumentException>(() => { new Testlet.Models.Testlet("", TestData.CreateItems()); });
             Assert.Throws<ArgumentException>(() => { new Testlet.Models.Testlet(null, TestData.CreateItems()); });
             Assert.Throws<ArgumentException>(() => { new Testlet.Models.Testlet("    ", TestData.CreateItems()); });
+        }
+
+        [Test]
+        public void CreateWithNullItems()
+        {
+            Assert.Throws<ArgumentException>(() => { new Testlet.Models.Testlet(TestId, null); });
         }
     }
 }

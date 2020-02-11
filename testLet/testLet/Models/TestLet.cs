@@ -10,6 +10,7 @@ namespace Testlet.Models
     {
         public string TestletId { get; }
         private readonly List<Item> Items;
+        private readonly RandomizeItem randomizeItem;
 
         public Testlet(string testletId, List<Item> items)
         {
@@ -19,13 +20,19 @@ namespace Testlet.Models
                 throw new ArgumentException("argument must be filled",nameof(testletId));
             }
 
+            if(Equals(items, null))
+            {
+                throw new ArgumentException("argument null", nameof(items));
+            }
+
+            randomizeItem = new RandomizeItem();
             TestletId = testletId;
             Items = new List<Item>(items);
         }
 
         public List<Item> Randomize()
         {
-            VerifyItems();
+            randomizeItem.VerifyData(4, 10, Items);
 
             var random = new Random();
             var temp = new List<Item>(Items);
@@ -52,30 +59,6 @@ namespace Testlet.Models
             result.Add(temp[0]);
 
             return result;
-        }
-
-        private void VerifyItems()
-        {
-            if (Items.Count != 10)
-            {
-                throw new IncorrectItemsException();
-            }
-
-            if (Items.Any(_=> _ == null))
-            {
-                throw new IncorrectItemsException();
-            }
-
-            var itemComparer = new ItemComparer();
-            if(Items.Distinct(itemComparer).Count()!= 10)
-            {
-                throw new IncorrectItemsException();
-            }
-
-            if(Items.Where(_=>_.ItemType == ItemTypeEnum.Pretest).Count() != 4)
-            {
-                throw new IncorrectItemsException();
-            }
         }
     }
 }
