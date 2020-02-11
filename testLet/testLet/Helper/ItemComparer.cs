@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using TestLet.Models;
+using Testlet.Models;
 
-namespace TestLet.Helper
+namespace Testlet.Helper
 {
-    internal class ItemComparer : IEqualityComparer<Item>
+    public class ItemComparer : IEqualityComparer<Item>
     {
         public bool Equals([AllowNull] Item x, [AllowNull] Item y)
         {

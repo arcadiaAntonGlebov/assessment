@@ -1,4 +1,4 @@
-﻿namespace TestLet.Models
+﻿namespace Testlet.Models
 {
     public enum ItemTypeEnum
     {

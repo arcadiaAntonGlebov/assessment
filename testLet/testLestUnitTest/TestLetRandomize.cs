@@ -1,13 +1,14 @@
 ﻿using NUnit.Framework;
 using System.Linq;
-using TestLestUnitTest.Helper;
-using TestLet.Exceptions;
-using TestLet.Models;
+using TestlestUnitTest.Helper;
+using Testlet.Exceptions;
+using Testlet.Helper;
+using Testlet.Models;
 
-namespace TestLestUnitTest
+namespace TestLetUnitTest
 {
     [TestFixture]
-    public class TestLetRandomize
+    public class testletRandomize
     {
         const string TestId = "testId";
 
@@ -16,41 +17,41 @@ namespace TestLestUnitTest
         {
             // items should be 10
             Assert.Throws<IncorrectItemsException>(() => {
-                var testLet = new Testlet(TestId, ItemHelper.CreateItems().Take(5).ToList());
-                testLet.Randomize();
+                var testlet = new Testlet.Models.Testlet(TestId, TestData.CreateItems().Take(5).ToList());
+                testlet.Randomize();
             });
             Assert.Throws<IncorrectItemsException>(() => { 
-                var testLet = new Testlet(TestId, ItemHelper.CreateItems().Concat(ItemHelper.CreateItems()).ToList());
-                testLet.Randomize();
+                var testlet = new Testlet.Models.Testlet(TestId, TestData.CreateItems().Concat(TestData.CreateItems()).ToList());
+                testlet.Randomize();
             });
         }
 
         [Test]
         public void CreateWithSameItemID()
         {
-            var currentItems = ItemHelper.CreateItems();
+            var currentItems = TestData.CreateItems();
             currentItems[1].ItemId = "1";
-            var testLet = new Testlet(TestId, currentItems);
-            Assert.Throws<IncorrectItemsException>(() => testLet.Randomize());
+            var testlet = new Testlet.Models.Testlet(TestId, currentItems);
+            Assert.Throws<IncorrectItemsException>(() => testlet.Randomize());
         }
 
         [Test]
         public void CreateWithIncorrectPretestCount()
         {
-            var currentItems = ItemHelper.CreateItems();
+            var currentItems = TestData.CreateItems();
             currentItems[9].ItemType = ItemTypeEnum.Pretest;
-            var testLet = new Testlet(TestId, currentItems);
-            Assert.Throws<IncorrectItemsException>(() => testLet.Randomize());
+            var testlet = new Testlet.Models.Testlet(TestId, currentItems);
+            Assert.Throws<IncorrectItemsException>(() => testlet.Randomize());
         }
 
         [Test]
         public void CheckFirstTwoIsPretest()
         {
-            var currentItems = ItemHelper.CreateItems();
+            var currentItems = TestData.CreateItems();
 
-            var testLet = new Testlet(TestId, currentItems);
+            var testlet = new Testlet.Models.Testlet(TestId, currentItems);
 
-            var randomizeItems = testLet.Randomize();
+            var randomizeItems = testlet.Randomize();
 
             // first two item pretest
             Assert.IsTrue(randomizeItems[0].ItemType == ItemTypeEnum.Pretest);
@@ -60,16 +61,16 @@ namespace TestLestUnitTest
         [Test]
         public void CheckRandomItemsIsRandomAndDoNotDuplicate()
         {
-            var currentItems = ItemHelper.CreateItems();
+            var currentItems = TestData.CreateItems();
 
-            var testLet = new Testlet(TestId, currentItems);
+            var testlet = new Testlet.Models.Testlet(TestId, currentItems);
 
-            var randomizeItems = testLet.Randomize();
+            var randomizeItems = testlet.Randomize();
 
             // no items repeat in randomize
             var distinct = randomizeItems.Distinct();
             Assert.IsTrue(distinct.Count() == 10);
-            var itemsComparer = new ItemsComparer();
+            var itemsComparer = new ItemComparer();
             distinct = randomizeItems.Distinct(itemsComparer);
             Assert.IsTrue(distinct.Count() == 10);
         }
@@ -77,21 +78,21 @@ namespace TestLestUnitTest
         [Test]
         public void CheckRandomItemOnCallAndNewElemet()
         {
-            var currentItems = ItemHelper.CreateItems();
+            var currentItems = TestData.CreateItems();
 
-            var testLet = new Testlet(TestId, currentItems);
+            var testlet = new Testlet.Models.Testlet(TestId, currentItems);
 
-            var randomizeItems = testLet.Randomize();
+            var randomizeItems = testlet.Randomize();
 
             //items should be random
-            var newRandomItems = testLet.Randomize();
+            var newRandomItems = testlet.Randomize();
             //we have limited items and it is possible that some items in same order but it should be less than 10
-            Assert.IsTrue(ItemHelper.IntersectItems(randomizeItems, newRandomItems) < 10);
+            Assert.IsTrue(TestData.IntersectItems(randomizeItems, newRandomItems) < 10);
 
-            var newTestLet = new Testlet(TestId, currentItems);
-            newRandomItems = newTestLet.Randomize();
+            var newtestlet = new Testlet.Models.Testlet(TestId, currentItems);
+            newRandomItems = newtestlet.Randomize();
             //we have limited items and it is possible that some items in same order but it should be less than 10
-            Assert.IsTrue(ItemHelper.IntersectItems(randomizeItems, newRandomItems) < 10);
+            Assert.IsTrue(TestData.IntersectItems(randomizeItems, newRandomItems) < 10);
         }
     }
 }

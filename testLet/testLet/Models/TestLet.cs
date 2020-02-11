@@ -1,26 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using TestLet.Exceptions;
-using TestLet.Helper;
+using Testlet.Exceptions;
+using Testlet.Helper;
 
-namespace TestLet.Models
+namespace Testlet.Models
 {
     public class Testlet
     {
-        public string TestletId;
-        private List<Item> Items;
+        public string TestletId { get; }
+        private readonly List<Item> Items;
 
         public Testlet(string testletId, List<Item> items)
         {
             //Verify id
             if (String.IsNullOrWhiteSpace(testletId))
             {
-                throw new ArgumentException("testLetId must be filled");
+                throw new ArgumentException("argument must be filled",nameof(testletId));
             }
 
             TestletId = testletId;
-            Items = items;
+            Items = new List<Item>(items);
         }
 
         public List<Item> Randomize()

@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using TestLet.Models;
+using Testlet.Models;
 
-namespace TestLestUnitTest.Helper
+namespace TestlestUnitTest.Helper
 {
-    public static class ItemHelper
+    public static class TestData
     {
         public static List<Item> CreateItems()
         {

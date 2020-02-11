@@ -1,8 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
-using System.Linq;
-using TestLestUnitTest.Helper;
-using TestLet.Models;
+using TestlestUnitTest.Helper;
 
 namespace TestLestUnitTest
 {
@@ -14,18 +12,18 @@ namespace TestLestUnitTest
         [Test]
         public void Create()
         {
-            var correctItems = ItemHelper.CreateItems();
-            var testLet = new Testlet(TestId, correctItems);
+            var correctItems = TestData.CreateItems();
+            var testLet = new Testlet.Models.Testlet(TestId, correctItems);
             Assert.AreEqual(TestId, testLet.TestletId);
         }
 
         [Test]
-        public void CreateWithEmpty()
+        public void CreateWithEmptyTestletId()
         {
             //id should be filled
-            Assert.Throws<ArgumentException>(() => { new Testlet("", ItemHelper.CreateItems()); });
-            Assert.Throws<ArgumentException>(() => { new Testlet(null, ItemHelper.CreateItems()); });
-            Assert.Throws<ArgumentException>(() => { new Testlet("    ", ItemHelper.CreateItems()); });
+            Assert.Throws<ArgumentException>(() => { new Testlet.Models.Testlet("", TestData.CreateItems()); });
+            Assert.Throws<ArgumentException>(() => { new Testlet.Models.Testlet(null, TestData.CreateItems()); });
+            Assert.Throws<ArgumentException>(() => { new Testlet.Models.Testlet("    ", TestData.CreateItems()); });
         }
     }
 }

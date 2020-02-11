@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 
-namespace TestLet.Exceptions
+namespace Testlet.Exceptions
 {
     public class IncorrectItemsException : ApplicationException
     {
