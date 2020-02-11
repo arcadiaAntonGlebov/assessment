@@ -8,13 +8,14 @@ namespace Testlet.Helper
 {
     public class Randomization
     {
+        private readonly int startsWithNPretests;
 
-        public Randomization()
+        public Randomization(int startsWithNPretests)
         {
-            
+            this.startsWithNPretests = startsWithNPretests;
         }
 
-        public List<Item> Randomize(int startsWithNPretests, List<Item> items)
+        public List<Item> Randomize(List<Item> items)
         {
             VerifyData(startsWithNPretests, items);
             var randomOrder = RandomizeOrder(items);

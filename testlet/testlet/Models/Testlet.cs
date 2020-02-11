@@ -9,9 +9,9 @@ namespace Testlet.Models
     {
         public string TestletId { get; }
         private readonly List<Item> Items;
-        private readonly Randomization randomizeItem;
+        private readonly Randomization randomization;
 
-        public Testlet(string testletId, List<Item> items)
+        public Testlet(string testletId, List<Item> items, Randomization randomization)
         {
             //Verify id
             if (String.IsNullOrWhiteSpace(testletId))
@@ -24,14 +24,14 @@ namespace Testlet.Models
                 throw new ArgumentException("argument null", nameof(items));
             }
 
-            randomizeItem = new Randomization();
+            this.randomization = randomization;
             TestletId = testletId;
             Items = new List<Item>(items);
         }
 
         public List<Item> Randomize()
         {
-            var result = randomizeItem.Randomize(2, Items);
+            var result = randomization.Randomize(Items);
 
             return result;
         }

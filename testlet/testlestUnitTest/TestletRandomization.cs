@@ -2,6 +2,7 @@
 using TestletUnitTests.Helper;
 using Testlet.Models;
 using System;
+using Testlet.Helper;
 
 namespace TestletUnitTests
 {
@@ -17,7 +18,7 @@ namespace TestletUnitTests
             currentItems[1].ItemType = ItemTypeEnum.Operational;
             currentItems[3].ItemType = ItemTypeEnum.Operational;
             currentItems[5].ItemType = ItemTypeEnum.Operational;
-            var testlet = new Testlet.Models.Testlet(TestId, currentItems);
+            var testlet = new Testlet.Models.Testlet(TestId, currentItems, new Randomization(2));
             Assert.Throws<InvalidOperationException>(() => testlet.Randomize());
         }
 
@@ -26,7 +27,7 @@ namespace TestletUnitTests
         {
             var currentItems = TestData.CreateItems();
 
-            var testlet = new Testlet.Models.Testlet(TestId, currentItems);
+            var testlet = new Testlet.Models.Testlet(TestId, currentItems, new Randomization(2));
 
             var randomizeItems = testlet.Randomize();
 
@@ -40,7 +41,7 @@ namespace TestletUnitTests
         {
             var currentItems = TestData.CreateItems();
 
-            var testlet = new Testlet.Models.Testlet(TestId, currentItems);
+            var testlet = new Testlet.Models.Testlet(TestId, currentItems, new Randomization(2));
 
             var randomizeItems = testlet.Randomize();
 
