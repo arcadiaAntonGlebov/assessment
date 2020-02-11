@@ -10,4 +10,3 @@ namespace testLet.Models
         public ItemTypeEnum ItemType;
     }
 }
-}
