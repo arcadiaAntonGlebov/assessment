@@ -31,7 +31,7 @@ namespace TestletUnitTests
 
             var randomizeItems = testlet.Randomize();
 
-            // first two item pretest
+            // first two items are pretest
             Assert.IsTrue(randomizeItems[0].ItemType == ItemTypeEnum.Pretest);
             Assert.IsTrue(randomizeItems[1].ItemType == ItemTypeEnum.Pretest);
         }
@@ -47,7 +47,7 @@ namespace TestletUnitTests
 
             //items should be randomize
             var newRandomItems = testlet.Randomize();
-            //we have limited items and it is possible that some items in same order but it should be less than 10
+            //we have limited items and it is possible that some items are in the same order but hopefully not all of them
             Assert.IsTrue(TestData.CountIntersectedItems(randomizeItems, newRandomItems) < randomizeItems.Count);
         }
     }
