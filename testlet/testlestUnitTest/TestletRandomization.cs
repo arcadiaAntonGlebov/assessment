@@ -45,7 +45,7 @@ namespace TestletUnitTests
 
             var randomizeItems = testlet.Randomize();
 
-            //items should be randomize
+            //items should be randomized
             var newRandomItems = testlet.Randomize();
             //we have limited items and it is possible that some items are in the same order but hopefully not all of them
             Assert.IsTrue(TestData.CountIntersectedItems(randomizeItems, newRandomItems) < randomizeItems.Count);
