@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Testlet.Models;
 
-namespace TestletUnitTest.Helper
+namespace TestletUnitTests.Helper
 {
     public static class TestData
     {

@@ -1,11 +1,11 @@
 ﻿using NUnit.Framework;
 using System;
-using TestletUnitTest.Helper;
+using TestletUnitTests.Helper;
 
-namespace TestletUnitTest
+namespace TestletUnitTests
 {
     [TestFixture]
-    public class TestletCreate
+    public class TestletCreation
     {
         const string TestId = "testId";
 
@@ -18,7 +18,7 @@ namespace TestletUnitTest
         }
 
         [Test]
-        public void CreateWithEmptyTestletId()
+        public void CreationFailsWithEmptyTestletId()
         {
             //id should be filled
             Assert.Throws<ArgumentException>(() => { new Testlet.Models.Testlet("", TestData.CreateItems()); });
@@ -27,7 +27,7 @@ namespace TestletUnitTest
         }
 
         [Test]
-        public void CreateWithNullItems()
+        public void CreationFailsWhenItemsArgumentIsNul()
         {
             Assert.Throws<ArgumentException>(() => { new Testlet.Models.Testlet(TestId, null); });
         }
